@@ -8,6 +8,7 @@ namespace SeminterratiEDragoni.Models
 {
     class Hero
     {
+        public int HP { get; set; }
         public string Name { get; set; }
         public int Strength { get; set; }
         public int Dexterity { get; set; }

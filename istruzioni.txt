@@ -1,0 +1,20 @@
+Nome inserire tramite console
+Le altre stat vedere se generarle da 1 a 20 randomicamente
+Crearne due così e farli combattere a turni.
+
+Premendo invio si attaccano a vicenda
+Ad ogni round A attacca B e B attacca A
+Tiri un D20 e la Forza > del tiro, colpisce
+Se forza è < del risultato non colpisce
+
+Se A colpisce B, B può evitare se agilità > un altro tiro di dado
+E viceversa
+
+Se il tiro ha successo, evita del tutto il danno. Se è inferiore, prende danno.
+
+Se colpisce, si tira di intelligenza. Se int attaccante > tiro D20
+Fa danno doppio
+
+Per determinare il danno si tira un D10 ed è flat.
+
+Si va avanti finché uno dei due non muore

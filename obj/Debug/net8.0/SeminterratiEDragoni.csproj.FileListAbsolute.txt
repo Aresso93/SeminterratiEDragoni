@@ -1,0 +1,15 @@
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\bin\Debug\net8.0\SeminterratiEDragoni.exe
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\bin\Debug\net8.0\SeminterratiEDragoni.deps.json
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\bin\Debug\net8.0\SeminterratiEDragoni.runtimeconfig.json
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\bin\Debug\net8.0\SeminterratiEDragoni.dll
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\bin\Debug\net8.0\SeminterratiEDragoni.pdb
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\obj\Debug\net8.0\SeminterratiEDragoni.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\obj\Debug\net8.0\SeminterratiEDragoni.AssemblyInfoInputs.cache
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\obj\Debug\net8.0\SeminterratiEDragoni.AssemblyInfo.cs
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\obj\Debug\net8.0\SeminterratiEDragoni.csproj.CoreCompileInputs.cache
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\obj\Debug\net8.0\SeminterratiEDragoni.sourcelink.json
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\obj\Debug\net8.0\SeminterratiEDragoni.dll
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\obj\Debug\net8.0\refint\SeminterratiEDragoni.dll
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\obj\Debug\net8.0\SeminterratiEDragoni.pdb
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\obj\Debug\net8.0\SeminterratiEDragoni.genruntimeconfig.cache
+C:\Users\fiumicelli\source\repos\SeminterratiEDragoni\SeminterratiEDragoni\obj\Debug\net8.0\ref\SeminterratiEDragoni.dll
