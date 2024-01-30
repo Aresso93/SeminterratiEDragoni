@@ -32,35 +32,36 @@ namespace SeminterratiEDragoni
         {
             int attackRoll = DiceRoll();
             bool hit;
-            Console.WriteLine("Strength check! \n-----------------------");
+            Console.WriteLine($"Strength check for {hero.Name}! \n-----------------------");
             if (hero.Strength > attackRoll)
             {
-                Console.WriteLine($"{hero.Name} rolled a {attackRoll}! The opponent will try to dodge!\n***********************");
+                Console.WriteLine($"{hero.Name} rolled a {attackRoll}! The opponent will try to dodge!\n\n");
                 hit = true;
                 return hit;
             }
             else
             {
-                Console.WriteLine($"{hero.Name} rolled a {attackRoll}! Miss!\n***********************");
+                Console.WriteLine($"{hero.Name} rolled a {attackRoll}! Miss!\n\n");
                 hit = false;
                 return hit;
             }
-            
+
         }
 
         static bool RollToDodge(Hero hero1, Hero hero2)
         {
             bool dodge;
             int dodgeRoll = DiceRoll();
-            Console.WriteLine("Dexterity check! \n-----------------------");
+            Console.WriteLine($"Dexterity check for {hero1.Name}! \n-----------------------");
             if (hero1.Dexterity > dodgeRoll)
             {
-                Console.WriteLine($"{hero1.Name} rolled a {dodgeRoll}! {hero1.Name} dodged {hero2.Name}\'s attack!\n***********************");
+                Console.WriteLine($"{hero1.Name} rolled a {dodgeRoll}! {hero1.Name} dodged {hero2.Name}\'s attack!\n\n");
                 dodge = true;
                 return dodge;
-            } else
+            }
+            else
             {
-                Console.WriteLine($"{hero1.Name} rolled a {dodgeRoll}! {hero1.Name} wasn't able to dodge!\n***********************");
+                Console.WriteLine($"{hero1.Name} rolled a {dodgeRoll}! {hero1.Name} wasn't able to dodge!\n\n");
                 dodge = false;
                 return dodge;
             }
@@ -73,25 +74,19 @@ namespace SeminterratiEDragoni
             return damage;
         }
 
-        static Hero TakeDamage(Hero woundedHero)
-        {
-            woundedHero.HP = woundedHero.HP - RollForDamage();
-            Console.WriteLine($"{woundedHero.Name}\'s HP are now {woundedHero.HP}");
-            return woundedHero;
-        }
-
         static bool RollToDoubleDamage(Hero hero)
         {
             int doubleDamageCheck = DiceRoll();
             bool doubleDamage;
-            Console.WriteLine("Intelligence check! \n-----------------------");
+            Console.WriteLine($"Intelligence check for {hero.Name}! \n-----------------------");
             if (hero.Intelligence > doubleDamageCheck)
             {
                 Console.WriteLine("It's a critical hit!");
                 doubleDamage = true;
                 return doubleDamage;
 
-            } else
+            }
+            else
             {
                 Console.WriteLine("It's a regular hit!");
                 doubleDamage = false;
@@ -120,41 +115,72 @@ namespace SeminterratiEDragoni
             Console.WriteLine("Press enter to start the round");
             Console.ReadLine();
 
-            //while (hero1.HP > 0 && hero2.HP > 0) { 
-                        //COSE DA CICLARE
-            //}
-
-            //if (RollToHit(hero1) == true && RollToDodge(hero2, hero1) == false)
-            //{
-            //    Console.WriteLine("Rolling for double damage...");
-
-            //} else if (RollToDodge(hero2, hero1) == true)
-            //{
-            //    Console.WriteLine($"It's a hit on {hero2.Name}!");
-            //}
-
-            if (RollToHit(hero1))
+            while (hero1.HP > 0 && hero2.HP > 0)
             {
-                if(RollToDodge(hero2, hero1) == false) 
+                //COSE DA CICLARE
+                if (RollToHit(hero1))
                 {
-                    if (RollToDoubleDamage(hero1))
+                    if (RollToDodge(hero2, hero1) == false)
                     {
-                        int damage = RollForDamage()*2;
-                        hero2.HP = hero2.HP - damage;
-                        Console.WriteLine($"{damage} damage! {hero2.Name} has {hero2.HP} HP left!");
-                    } else
+                        if (RollToDoubleDamage(hero1))
+                        {
+                            int damage = RollForDamage() * 2;
+                            hero2.HP = hero2.HP - damage;
+                            Console.WriteLine($"{damage} damage! {hero2.Name} has {hero2.HP} HP left!\nNext round!");
+                        }
+                        else
+                        {
+                            int damage = RollForDamage();
+                            hero2.HP = hero2.HP - damage;
+                            Console.WriteLine($"{damage} damage! {hero2.Name} has {hero2.HP} HP left!\nNext round!");
+                        }
+                    }
+                    else
                     {
-                        int damage = RollForDamage();
-                        hero2.HP = hero2.HP - damage;
-                        Console.WriteLine($"{damage} damage! {hero2.Name} has {hero2.HP} HP left!");
+                        Console.WriteLine("Piccolo would be proud! Next round!");
                     }
                 }
-            } else
-            {
-                Console.WriteLine("CULO");
+                else
+                {
+                    Console.WriteLine("Next round!");
+                }
+
+                if (RollToHit(hero2))
+                {
+                    if (RollToDodge(hero1, hero2) == false)
+                    {
+                        if (RollToDoubleDamage(hero2))
+                        {
+                            int damage = RollForDamage() * 2;
+                            hero1.HP = hero1.HP - damage;
+                            Console.WriteLine($"{damage} damage! {hero1.Name} has {hero1.HP} HP left!");
+                        }
+                        else
+                        {
+                            int damage = RollForDamage();
+                            hero1.HP = hero1.HP - damage;
+                            Console.WriteLine($"{damage} damage! {hero1.Name} has {hero1.HP} HP left!");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Piccolo would be proud! Next round!");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Next round!");
+                }
+
+
+
             }
-            
         }
+
+
+
+           
+
 
         static void Main(string[] args)
         {
@@ -173,9 +199,16 @@ namespace SeminterratiEDragoni
             lukeAlbanians.Intelligence = 13;
 
             Fight(paulJots, lukeAlbanians);
-            //RollToDodge(lukeAlbanians, paulJots);
         }
     }
 }
 
 
+//if (RollToHit(hero1) == true && RollToDodge(hero2, hero1) == false)
+//{
+//    Console.WriteLine("Rolling for double damage...");
+
+//} else if (RollToDodge(hero2, hero1) == true)
+//{
+//    Console.WriteLine($"It's a hit on {hero2.Name}!");
+//}
