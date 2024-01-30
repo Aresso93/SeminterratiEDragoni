@@ -57,7 +57,7 @@ namespace SeminterratiEDragoni
             Console.WriteLine($"Dexterity check for {hero1.Name}! \n-----------------------");
             if (hero1.Dexterity > dodgeRoll)
             {
-                Console.WriteLine($"{hero1.Name} rolled a {dodgeRoll}! {hero1.Name} dodged {hero2.Name}\'s attack!\n\n");
+                Console.WriteLine($"{hero1.Name} rolled a {dodgeRoll}! {hero1.Name} dodged {hero2.Name}\'s attack!\n");
                 dodge = true;
                 return dodge;
             }
