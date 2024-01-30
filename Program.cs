@@ -10,24 +10,28 @@ namespace SeminterratiEDragoni
             Random roll = new Random();
             return roll.Next(1, 20);
         }
+        static void HeroDeath(Hero hero)
+        {
+                Console.WriteLine($"{hero.Name} has been vanquished. This is so sad... Alexa, play Requiem by Wolfgang Amadeus Mozart");
+        }
         static Hero CreateCharacter()
         {
             Hero hero = new Hero();
-            Console.WriteLine("Name your hero!");
+            Console.WriteLine("Name your hero!\n");
             hero.Name = Console.ReadLine()!;
             hero.HP = 100;
             hero.Strength = DiceRoll();
             hero.Dexterity = DiceRoll();
             hero.Intelligence = DiceRoll();
+            Console.WriteLine("This is your hero!\n");
             Console.WriteLine("Name: " + hero.Name +
                               "\nHitpoints: " + hero.HP +
                               "\nStrength: " + hero.Strength +
                               "\nDexterity: " + hero.Dexterity +
-                              "\nIntelligence: " + hero.Intelligence
+                              "\nIntelligence: " + hero.Intelligence + "\n"
                               );
             return hero;
         }
-
         static bool RollToHit(Hero hero)
         {
             int attackRoll = DiceRoll();
@@ -45,9 +49,7 @@ namespace SeminterratiEDragoni
                 hit = false;
                 return hit;
             }
-
         }
-
         static bool RollToDodge(Hero hero1, Hero hero2)
         {
             bool dodge;
@@ -66,14 +68,12 @@ namespace SeminterratiEDragoni
                 return dodge;
             }
         }
-
         static int RollForDamage()
         {
             Random roll = new Random();
             int damage = roll.Next(1, 10);
             return damage;
         }
-
         static bool RollToDoubleDamage(Hero hero)
         {
             int doubleDamageCheck = DiceRoll();
@@ -84,7 +84,6 @@ namespace SeminterratiEDragoni
                 Console.WriteLine("It's a critical hit!");
                 doubleDamage = true;
                 return doubleDamage;
-
             }
             else
             {
@@ -93,7 +92,6 @@ namespace SeminterratiEDragoni
                 return doubleDamage;
             }
         }
-
         static void Fight(Hero hero1, Hero hero2)
         {
             Console.WriteLine("First challenger!" +
@@ -117,7 +115,6 @@ namespace SeminterratiEDragoni
 
             while (hero1.HP > 0 && hero2.HP > 0)
             {
-                //COSE DA CICLARE
                 if (RollToHit(hero1))
                 {
                     if (RollToDodge(hero2, hero1) == false)
@@ -126,18 +123,28 @@ namespace SeminterratiEDragoni
                         {
                             int damage = RollForDamage() * 2;
                             hero2.HP = hero2.HP - damage;
-                            Console.WriteLine($"{damage} damage! {hero2.Name} has {hero2.HP} HP left!\nNext round!");
+                            Console.WriteLine($"{damage} damage! {hero2.Name} has {hero2.HP} HP left!\nNext round!\n");
+                            if (hero2.HP <= 0)
+                            {
+                                HeroDeath(hero2);
+                                break;
+                            }
                         }
                         else
                         {
                             int damage = RollForDamage();
                             hero2.HP = hero2.HP - damage;
-                            Console.WriteLine($"{damage} damage! {hero2.Name} has {hero2.HP} HP left!\nNext round!");
+                            Console.WriteLine($"{damage} damage! {hero2.Name} has {hero2.HP} HP left!\nNext round!\n");
+                            if (hero2.HP <= 0)
+                            {
+                                HeroDeath(hero2);
+                                break;
+                            }
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Piccolo would be proud! Next round!");
+                        Console.WriteLine("Piccolo would be proud! Next round!\n");
                     }
                 }
                 else
@@ -153,35 +160,39 @@ namespace SeminterratiEDragoni
                         {
                             int damage = RollForDamage() * 2;
                             hero1.HP = hero1.HP - damage;
-                            Console.WriteLine($"{damage} damage! {hero1.Name} has {hero1.HP} HP left!");
+                            Console.WriteLine($"{damage} damage! {hero1.Name} has {hero1.HP} HP left!\n");
+                            if (hero1.HP <= 0)
+                            {
+                                HeroDeath(hero1);
+                                break;
+                            }
                         }
                         else
                         {
                             int damage = RollForDamage();
                             hero1.HP = hero1.HP - damage;
-                            Console.WriteLine($"{damage} damage! {hero1.Name} has {hero1.HP} HP left!");
-                        }
+                            Console.WriteLine($"{damage} damage! {hero1.Name} has {hero1.HP} HP left!\n");
+                            if (hero1.HP <= 0)
+                            {
+                                HeroDeath(hero1);
+                                break;
+                            }
+                        } 
                     }
                     else
                     {
-                        Console.WriteLine("Piccolo would be proud! Next round!");
+                        Console.WriteLine("Piccolo would be proud! Next round!\n");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Next round!");
+                    Console.WriteLine("Next round!\n");
                 }
-
-
-
+                Console.WriteLine("Press enter for next round when ready");
+                Console.ReadLine();
             }
         }
-
-
-
-           
-
-
+      
         static void Main(string[] args)
         {
             Hero paulJots = new Hero();
@@ -198,17 +209,9 @@ namespace SeminterratiEDragoni
             lukeAlbanians.Dexterity = 6;
             lukeAlbanians.Intelligence = 13;
 
-            Fight(paulJots, lukeAlbanians);
+            //Fight(paulJots, lukeAlbanians);
+            Fight(CreateCharacter(), CreateCharacter());
+
         }
     }
 }
-
-
-//if (RollToHit(hero1) == true && RollToDodge(hero2, hero1) == false)
-//{
-//    Console.WriteLine("Rolling for double damage...");
-
-//} else if (RollToDodge(hero2, hero1) == true)
-//{
-//    Console.WriteLine($"It's a hit on {hero2.Name}!");
-//}
