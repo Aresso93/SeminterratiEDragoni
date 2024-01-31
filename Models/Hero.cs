@@ -25,9 +25,10 @@ namespace SeminterratiEDragoni.Models
         }
         public static bool RollToHit(Hero hero)
         {
+            Console.WriteLine($"Strength check for {hero.Name}! \n-----------------------");
             int attackRoll = DiceRoll();
             bool hit;
-            Console.WriteLine($"Strength check for {hero.Name}! \n-----------------------");
+
             if (hero.Strength > attackRoll)
             {
                 Console.WriteLine($"{hero.Name} rolled a {attackRoll}! The opponent will try to dodge!\n");
@@ -45,16 +46,17 @@ namespace SeminterratiEDragoni.Models
         {
             bool dodge;
             int dodgeRoll = DiceRoll();
-            Console.WriteLine($"Dexterity check for {hero.Name}! \n-----------------------");
+            //Console.WriteLine($"Dexterity check for {hero.Name}! \n-----------------------");
             if (hero.Dexterity > dodgeRoll)
             {
-                Console.WriteLine($"{hero.Name} rolled a {dodgeRoll}! {hero.Name} dodged the opponent\'s attack!\n");
+                Console.WriteLine($"{hero.Name} rolled a {dodgeRoll}! {hero.Name} dodged the opponent\'s attack!\nPiccolo would be proud!\n");
+                
                 dodge = true;
                 return dodge;
             }
             else
             {
-                Console.WriteLine($"{hero.Name} rolled a {dodgeRoll}! {hero.Name} wasn't able to dodge!\n");
+                Console.WriteLine($"{hero.Name} rolled a {dodgeRoll}! {hero.Name} wasn't able to dodge!\n{hero.Name}... Why... didn't you... DOOOOOOOOOOOOODGE!?\n");
                 dodge = false;
                 return dodge;
             }
@@ -63,16 +65,16 @@ namespace SeminterratiEDragoni.Models
         {
             int doubleDamageCheck = DiceRoll();
             bool doubleDamage;
-            Console.WriteLine($"Intelligence check for {hero.Name}! \n-----------------------");
+            //Console.WriteLine($"Intelligence check for {hero.Name}! \n-----------------------");
             if (hero.Intelligence > doubleDamageCheck)
             {
-                Console.WriteLine("This is going to be a critical hit!\n");
+                
                 doubleDamage = true;
                 return doubleDamage;
             }
             else
             {
-                Console.WriteLine("It's going to be a regular hit!");
+                
                 doubleDamage = false;
                 return doubleDamage;
             }

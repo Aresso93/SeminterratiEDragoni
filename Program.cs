@@ -43,8 +43,10 @@ namespace SeminterratiEDragoni
 
         static int Attack(Hero hero)
         {
+            //Console.WriteLine($"Strength check for {hero.Name}! \n-----------------------");
             if (Models.Hero.RollToHit(hero))
             {
+                //Console.WriteLine($"Intelligence check for {hero.Name}! \n-----------------------");
                 if (Models.Hero.RollToDoubleDamage(hero))
                 {
                     int damage = Models.Hero.RollForDamage() * 2;
@@ -62,12 +64,13 @@ namespace SeminterratiEDragoni
 
         static void Dodge(Hero hero)
         {
+            //Console.WriteLine($"Dexterity check for {hero.Name}! \n-----------------------");
             if (Models.Hero.RollToDodge(hero) == true)
             {
-                Console.WriteLine("Piccolo would be proud! Next round!\n");
+                Console.WriteLine("Piccolo would be proud!\n");
             } else
             {
-                Console.WriteLine("Why... didn't you... DOOOOOOOOOOOOODGE!?\nNext round!\n");
+                Console.WriteLine("Why... didn't you... DOOOOOOOOOOOOODGE!?\n");
             }
         }
 
@@ -86,10 +89,15 @@ namespace SeminterratiEDragoni
             while (hero1.HP > 0 && hero2.HP > 0)
             {
                 Console.WriteLine($"Round {roundNumber}! FIGHT!");
-                Attack(hero1);
-                Dodge(hero2);
-                Attack(hero2);
-                Dodge(hero1);
+
+                //Attack(hero1);
+                
+                Models.Hero.RollToDodge(hero2);
+
+                //Attack(hero2);
+                
+                Models.Hero.RollToDodge(hero1);
+                
                 RemainingHP(hero1, Attack(hero2));
                 RemainingHP(hero2, Attack(hero1));
                 if (hero1.HP <= 0 && hero2.HP > 0)
@@ -104,10 +112,9 @@ namespace SeminterratiEDragoni
                     Console.WriteLine($"IT'S A DOUBLE KO!!!");
                     break;
                 }
-                Console.WriteLine("Next round!");
                 roundNumber += 1;
                 Announcer.RoundEnd(hero1, hero2);
-                Thread.Sleep(3);
+                Thread.Sleep(3000);
             }
             Console.WriteLine("Would you like to play again? Press anything for yes or type \"no\" for no");
             string input = Console.ReadLine()!;
