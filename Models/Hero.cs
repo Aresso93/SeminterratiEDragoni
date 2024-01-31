@@ -41,7 +41,6 @@ namespace SeminterratiEDragoni.Models
                 return hit;
             }
         }
-
         public static bool RollToDodge(Hero hero1, Hero hero2)
         {
             bool dodge;

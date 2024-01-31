@@ -1,5 +1,4 @@
 ﻿using SeminterratiEDragoni.Models;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace SeminterratiEDragoni
 {
@@ -27,28 +26,36 @@ namespace SeminterratiEDragoni
                               "\nIntelligence: " + hero.Intelligence + "\n"
                               );
             return hero;
-        }       
+        }
+
+        static void PlayAgain(string input)
+        {
+            string newInput = Console.ReadLine();
+            if (input.ToLower().Trim() == "y")
+            {
+                Fight(CreateCharacter(), CreateCharacter());
+            }
+            else if (input.ToLower().Trim() == "n")
+            {
+                System.Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("Press Y to play again or N to exit");
+                PlayAgain(newInput);
+            }
+        }
+
+        static void BattlePhase(Hero hero)
+        {
+            
+        }
+
         static void Fight(Hero hero1, Hero hero2)
         {
-            Console.WriteLine("First challenger!" +
-                              "\nName: " + hero1.Name +
-                              "\nHitpoints: " + hero1.HP +
-                              "\nStrength: " + hero1.Strength +
-                              "\nDexterity: " + hero1.Dexterity +
-                              "\nIntelligence: " + hero1.Intelligence +
-                              "\n"
-                              );
-            Console.WriteLine("And the opponent!" +
-                              "\nName: " + hero2.Name +
-                              "\nHitpoints: " + hero2.HP +
-                              "\nStrength: " + hero2.Strength +
-                              "\nDexterity: " + hero2.Dexterity +
-                              "\nIntelligence: " + hero2.Intelligence +
-                              "\n"
-                              );
-            Console.WriteLine("Press enter to start the round");
+            Models.Announcer.RoundStart(hero1, hero2);
             Console.ReadLine();
-            
+
             int roundNumber = 1;
             while (hero1.HP > 0 && hero2.HP > 0)
             {
@@ -115,7 +122,7 @@ namespace SeminterratiEDragoni
                                 Models.Hero.HeroDeath(hero1);
                                 break;
                             }
-                        } 
+                        }
                     }
                     else
                     {
@@ -126,31 +133,18 @@ namespace SeminterratiEDragoni
                 {
                     Console.WriteLine("Next round!\n");
                 }
-                Console.WriteLine($"{hero1.Name}'s HP: {hero1.HP}\n{hero2.Name}'s HP: {hero2.HP}");
-                Console.WriteLine("Press enter for next round when ready");
                 roundNumber += 1;
-                Console.ReadLine();
+                Announcer.RoundEnd(hero1, hero2);
+                Thread.Sleep(3);
             }
+            Console.WriteLine("Would you like to play again? Y/N");
+            string input = Console.ReadLine()!;
+            PlayAgain(input);
         }
-      
+
         static void Main(string[] args)
         {
-            Hero paulJots = new Hero();
-            paulJots.Name = "Mario";
-            paulJots.HP = 100;
-            paulJots.Strength = 14;
-            paulJots.Dexterity = 9;
-            paulJots.Intelligence = 15;
-
-            Hero lukeAlbanians = new Hero();
-            lukeAlbanians.Name = "Pasta al forno";
-            lukeAlbanians.HP = 100;
-            lukeAlbanians.Strength = 17;
-            lukeAlbanians.Dexterity = 6;
-            lukeAlbanians.Intelligence = 13;
-
             Fight(CreateCharacter(), CreateCharacter());
-
         }
     }
 }
