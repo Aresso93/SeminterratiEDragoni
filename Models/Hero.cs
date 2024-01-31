@@ -30,7 +30,7 @@ namespace SeminterratiEDragoni.Models
             Console.WriteLine($"Strength check for {hero.Name}! \n-----------------------");
             if (hero.Strength > attackRoll)
             {
-                Console.WriteLine($"{hero.Name} rolled a {attackRoll}! The opponent will try to dodge!\n\n");
+                Console.WriteLine($"{hero.Name} rolled a {attackRoll}! The opponent will try to dodge!\n");
                 hit = true;
                 return hit;
             }
@@ -41,20 +41,20 @@ namespace SeminterratiEDragoni.Models
                 return hit;
             }
         }
-        public static bool RollToDodge(Hero hero1, Hero hero2)
+        public static bool RollToDodge(Hero hero)
         {
             bool dodge;
             int dodgeRoll = DiceRoll();
-            Console.WriteLine($"Dexterity check for {hero1.Name}! \n-----------------------");
-            if (hero1.Dexterity > dodgeRoll)
+            Console.WriteLine($"Dexterity check for {hero.Name}! \n-----------------------");
+            if (hero.Dexterity > dodgeRoll)
             {
-                Console.WriteLine($"{hero1.Name} rolled a {dodgeRoll}! {hero1.Name} dodged {hero2.Name}\'s attack!\n");
+                Console.WriteLine($"{hero.Name} rolled a {dodgeRoll}! {hero.Name} dodged the opponent\'s attack!\n");
                 dodge = true;
                 return dodge;
             }
             else
             {
-                Console.WriteLine($"{hero1.Name} rolled a {dodgeRoll}! {hero1.Name} wasn't able to dodge!\n");
+                Console.WriteLine($"{hero.Name} rolled a {dodgeRoll}! {hero.Name} wasn't able to dodge!\n");
                 dodge = false;
                 return dodge;
             }
@@ -66,13 +66,13 @@ namespace SeminterratiEDragoni.Models
             Console.WriteLine($"Intelligence check for {hero.Name}! \n-----------------------");
             if (hero.Intelligence > doubleDamageCheck)
             {
-                Console.WriteLine("It's a critical hit!");
+                Console.WriteLine("This is going to be a critical hit!\n");
                 doubleDamage = true;
                 return doubleDamage;
             }
             else
             {
-                Console.WriteLine("It's a regular hit!");
+                Console.WriteLine("It's going to be a regular hit!");
                 doubleDamage = false;
                 return doubleDamage;
             }

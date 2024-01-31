@@ -1,4 +1,2 @@
 
 Fai una procedura che fa fare il combattimento ma passa un eroe solo
-
-Fare che alla fine del programma chiede se vuoi fare un altro combattimento anziché chiudere il programma

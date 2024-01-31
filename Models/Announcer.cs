@@ -26,13 +26,16 @@ namespace SeminterratiEDragoni.Models
                               "\nIntelligence: " + hero2.Intelligence +
                               "\n"
                               );
-            Console.WriteLine("Press enter to start the round");
+            Console.WriteLine("The game will start shortly");
+            
         }
 
         public static void RoundEnd(Hero hero1, Hero hero2)
         {
             Console.WriteLine($"{hero1.Name}'s HP: {hero1.HP}\n{hero2.Name}'s HP: {hero2.HP}");
+            if(hero1.HP <= 0 || hero2.HP <= 0) {
             Console.WriteLine("Next round starting soon...");
+            }
         }
     }
 }
