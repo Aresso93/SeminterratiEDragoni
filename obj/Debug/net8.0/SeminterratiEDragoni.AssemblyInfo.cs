@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SeminterratiEDragoni")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba38756f0de34b9e256b42c1e4025a32f1f51c85")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa488972984cc9552f8c0d13f5b5ff9aad708bc7")]
 [assembly: System.Reflection.AssemblyProductAttribute("SeminterratiEDragoni")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SeminterratiEDragoni")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

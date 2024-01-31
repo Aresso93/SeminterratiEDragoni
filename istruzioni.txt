@@ -18,3 +18,7 @@ Fa danno doppio
 Per determinare il danno si tira un D10 ed è flat.
 
 Si va avanti finché uno dei due non muore
+
+Fai una procedura che fa fare il combattimento ma passa un eroe solo
+
+Fare che il combattimento è automatizzato con pause di tot secondi e alla fine del programma chiede se vuoi fare un altro combattimento anziché chiudere il programma

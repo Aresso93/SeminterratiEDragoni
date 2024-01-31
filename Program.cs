@@ -8,11 +8,7 @@ namespace SeminterratiEDragoni
         static int DiceRoll()
         {
             Random roll = new Random();
-            return roll.Next(1, 20);
-        }
-        static void HeroDeath(Hero hero)
-        {
-                Console.WriteLine($"{hero.Name} has been vanquished. This is so sad... Alexa, play Requiem by Wolfgang Amadeus Mozart");
+            return roll.Next(10, 20);
         }
         static Hero CreateCharacter()
         {
@@ -31,67 +27,7 @@ namespace SeminterratiEDragoni
                               "\nIntelligence: " + hero.Intelligence + "\n"
                               );
             return hero;
-        }
-        static bool RollToHit(Hero hero)
-        {
-            int attackRoll = DiceRoll();
-            bool hit;
-            Console.WriteLine($"Strength check for {hero.Name}! \n-----------------------");
-            if (hero.Strength > attackRoll)
-            {
-                Console.WriteLine($"{hero.Name} rolled a {attackRoll}! The opponent will try to dodge!\n\n");
-                hit = true;
-                return hit;
-            }
-            else
-            {
-                Console.WriteLine($"{hero.Name} rolled a {attackRoll}! Miss!\n\n");
-                hit = false;
-                return hit;
-            }
-        }
-        static bool RollToDodge(Hero hero1, Hero hero2)
-        {
-            bool dodge;
-            int dodgeRoll = DiceRoll();
-            Console.WriteLine($"Dexterity check for {hero1.Name}! \n-----------------------");
-            if (hero1.Dexterity > dodgeRoll)
-            {
-                Console.WriteLine($"{hero1.Name} rolled a {dodgeRoll}! {hero1.Name} dodged {hero2.Name}\'s attack!\n");
-                dodge = true;
-                return dodge;
-            }
-            else
-            {
-                Console.WriteLine($"{hero1.Name} rolled a {dodgeRoll}! {hero1.Name} wasn't able to dodge!\n\n");
-                dodge = false;
-                return dodge;
-            }
-        }
-        static int RollForDamage()
-        {
-            Random roll = new Random();
-            int damage = roll.Next(1, 10);
-            return damage;
-        }
-        static bool RollToDoubleDamage(Hero hero)
-        {
-            int doubleDamageCheck = DiceRoll();
-            bool doubleDamage;
-            Console.WriteLine($"Intelligence check for {hero.Name}! \n-----------------------");
-            if (hero.Intelligence > doubleDamageCheck)
-            {
-                Console.WriteLine("It's a critical hit!");
-                doubleDamage = true;
-                return doubleDamage;
-            }
-            else
-            {
-                Console.WriteLine("It's a regular hit!");
-                doubleDamage = false;
-                return doubleDamage;
-            }
-        }
+        }       
         static void Fight(Hero hero1, Hero hero2)
         {
             Console.WriteLine("First challenger!" +
@@ -112,32 +48,34 @@ namespace SeminterratiEDragoni
                               );
             Console.WriteLine("Press enter to start the round");
             Console.ReadLine();
-
+            
+            int roundNumber = 1;
             while (hero1.HP > 0 && hero2.HP > 0)
             {
-                if (RollToHit(hero1))
+                Console.WriteLine($"Round {roundNumber}! FIGHT!");
+                if (Models.Hero.RollToHit(hero1))
                 {
-                    if (RollToDodge(hero2, hero1) == false)
+                    if (Models.Hero.RollToDodge(hero2, hero1) == false)
                     {
-                        if (RollToDoubleDamage(hero1))
+                        if (Models.Hero.RollToDoubleDamage(hero1))
                         {
-                            int damage = RollForDamage() * 2;
+                            int damage = Models.Hero.RollForDamage() * 2;
                             hero2.HP = hero2.HP - damage;
                             Console.WriteLine($"{damage} damage! {hero2.Name} has {hero2.HP} HP left!\nNext round!\n");
                             if (hero2.HP <= 0)
                             {
-                                HeroDeath(hero2);
+                                Models.Hero.HeroDeath(hero2);
                                 break;
                             }
                         }
                         else
                         {
-                            int damage = RollForDamage();
+                            int damage = Models.Hero.RollForDamage();
                             hero2.HP = hero2.HP - damage;
                             Console.WriteLine($"{damage} damage! {hero2.Name} has {hero2.HP} HP left!\nNext round!\n");
                             if (hero2.HP <= 0)
                             {
-                                HeroDeath(hero2);
+                                Models.Hero.HeroDeath(hero2);
                                 break;
                             }
                         }
@@ -152,29 +90,29 @@ namespace SeminterratiEDragoni
                     Console.WriteLine("Next round!");
                 }
 
-                if (RollToHit(hero2))
+                if (Models.Hero.RollToHit(hero2))
                 {
-                    if (RollToDodge(hero1, hero2) == false)
+                    if (Models.Hero.RollToDodge(hero1, hero2) == false)
                     {
-                        if (RollToDoubleDamage(hero2))
+                        if (Models.Hero.RollToDoubleDamage(hero2))
                         {
-                            int damage = RollForDamage() * 2;
+                            int damage = Models.Hero.RollForDamage() * 2;
                             hero1.HP = hero1.HP - damage;
                             Console.WriteLine($"{damage} damage! {hero1.Name} has {hero1.HP} HP left!\n");
                             if (hero1.HP <= 0)
                             {
-                                HeroDeath(hero1);
+                                Models.Hero.HeroDeath(hero1);
                                 break;
                             }
                         }
                         else
                         {
-                            int damage = RollForDamage();
+                            int damage = Models.Hero.RollForDamage();
                             hero1.HP = hero1.HP - damage;
                             Console.WriteLine($"{damage} damage! {hero1.Name} has {hero1.HP} HP left!\n");
                             if (hero1.HP <= 0)
                             {
-                                HeroDeath(hero1);
+                                Models.Hero.HeroDeath(hero1);
                                 break;
                             }
                         } 
@@ -188,7 +126,9 @@ namespace SeminterratiEDragoni
                 {
                     Console.WriteLine("Next round!\n");
                 }
+                Console.WriteLine($"{hero1.Name}'s HP: {hero1.HP}\n{hero2.Name}'s HP: {hero2.HP}");
                 Console.WriteLine("Press enter for next round when ready");
+                roundNumber += 1;
                 Console.ReadLine();
             }
         }
@@ -209,7 +149,6 @@ namespace SeminterratiEDragoni
             lukeAlbanians.Dexterity = 6;
             lukeAlbanians.Intelligence = 13;
 
-            //Fight(paulJots, lukeAlbanians);
             Fight(CreateCharacter(), CreateCharacter());
 
         }
