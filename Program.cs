@@ -43,10 +43,8 @@ namespace SeminterratiEDragoni
 
         static int Attack(Hero hero)
         {
-            //Console.WriteLine($"Strength check for {hero.Name}! \n-----------------------");
             if (Models.Hero.RollToHit(hero))
             {
-                //Console.WriteLine($"Intelligence check for {hero.Name}! \n-----------------------");
                 if (Models.Hero.RollToDoubleDamage(hero))
                 {
                     int damage = Models.Hero.RollForDamage() * 2;
@@ -59,18 +57,6 @@ namespace SeminterratiEDragoni
             } else
             {
                 return 0;
-            }
-        }
-
-        static void Dodge(Hero hero)
-        {
-            //Console.WriteLine($"Dexterity check for {hero.Name}! \n-----------------------");
-            if (Models.Hero.RollToDodge(hero) == true)
-            {
-                Console.WriteLine("Piccolo would be proud!\n");
-            } else
-            {
-                Console.WriteLine("Why... didn't you... DOOOOOOOOOOOOODGE!?\n");
             }
         }
 
@@ -126,128 +112,3 @@ namespace SeminterratiEDragoni
         }
     }
 }
-
-
-//Console.WriteLine($"Round {roundNumber}! FIGHT!");
-
-//if (Models.Hero.RollToHit(hero1))
-//{
-//    if (Models.Hero.RollToDodge(hero2) == false)
-//    {
-//        if (Models.Hero.RollToDoubleDamage(hero1))
-//        {
-//            int damage = Models.Hero.RollForDamage() * 2;
-//            hero2.HP = hero2.HP - damage;
-//            Console.WriteLine($"{damage} damage! {hero2.Name} has {hero2.HP} HP left!\nNext round!\n");
-//            if (hero2.HP <= 0)
-//            {
-//                Models.Hero.HeroDeath(hero2);
-//                break;
-//            }
-//        }
-//        else
-//        {
-//            int damage = Models.Hero.RollForDamage();
-//            hero2.HP = hero2.HP - damage;
-//            Console.WriteLine($"{damage} damage! {hero2.Name} has {hero2.HP} HP left!\nNext round!\n");
-//            if (hero2.HP <= 0)
-//            {
-//                Models.Hero.HeroDeath(hero2);
-//                break;
-//            }
-//        }
-//    }
-//    else
-//    {
-//        Console.WriteLine("Piccolo would be proud! Next round!\n");
-//    }
-//}
-//else
-//{
-//    Console.WriteLine("Next round!");
-//}
-
-//if (Models.Hero.RollToHit(hero2))
-//{
-//    if (Models.Hero.RollToDodge(hero1) == false)
-//    {
-//        if (Models.Hero.RollToDoubleDamage(hero2))
-//        {
-//            int damage = Models.Hero.RollForDamage() * 2;
-//            hero1.HP = hero1.HP - damage;
-//            Console.WriteLine($"{damage} damage! {hero1.Name} has {hero1.HP} HP left!\n");
-//            if (hero1.HP <= 0)
-//            {
-//                Models.Hero.HeroDeath(hero1);
-//                break;
-//            }
-//        }
-//        else
-//        {
-//            int damage = Models.Hero.RollForDamage();
-//            hero1.HP = hero1.HP - damage;
-//            Console.WriteLine($"{damage} damage! {hero1.Name} has {hero1.HP} HP left!\n");
-//            if (hero1.HP <= 0)
-//            {
-//                Models.Hero.HeroDeath(hero1);
-//                break;
-//            }
-//        }
-//    }
-//    else
-//    {
-//        Console.WriteLine("Piccolo would be proud! Next round!\n");
-//    }
-//}
-//else
-//{
-//    Console.WriteLine("Next round!\n");
-//}
-
-//static void BattlePhase(Hero hero, Hero opponent)
-//{
-//    if (Models.Hero.RollToHit(hero))
-//    {
-//        if (Models.Hero.RollToDodge(opponent) == false)
-//        {
-//            if (Models.Hero.RollToDoubleDamage(hero))
-//            {
-//                int damage = Models.Hero.RollForDamage() * 2;
-//                opponent.HP = opponent.HP - damage;
-//                Console.WriteLine($"{damage} damage! {opponent.Name} has {opponent.HP} HP left!\nNext round!\n");
-//                if (opponent.HP <= 0)
-//                {
-//                    Models.Hero.HeroDeath(opponent);
-//                }
-//            }
-//            else
-//            {
-//                int damage = Models.Hero.RollForDamage();
-//                opponent.HP = opponent.HP - damage;
-//                Console.WriteLine($"{damage} damage! {opponent.Name} has {opponent.HP} HP left!\nNext round!\n");
-//                if (opponent.HP <= 0)
-//                {
-//                    Models.Hero.HeroDeath(opponent);
-//                }
-//            }
-//        }
-//        else
-//        {
-//            int damage = Models.Hero.RollForDamage();
-//            opponent.HP = opponent.HP - damage;
-//            Console.WriteLine($"{damage} damage! {opponent.Name} has {opponent.HP} HP left!\nNext round!\n");
-//            if (opponent.HP <= 0)
-//            {
-//                Models.Hero.HeroDeath(opponent);
-//            }
-//            else
-//            {
-//                Console.WriteLine("Piccolo would be proud! Next round!\n");
-//            }
-//        }
-//    }
-//    else
-//    {
-//        Console.WriteLine("Next round!");
-//    }
-//}
